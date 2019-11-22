@@ -136,6 +136,7 @@ class AnDate {
   consecutiveDates(repeat, offset) {
     // Why doesn't this return the AnDate class object, with all its properties?
     const createDate = (date, offset) => {
+      date = new AnDate(date)
       return new AnDate(
         date.getFullYear() + offset.years,
         date.getMonth() + offset.months,
