@@ -4,6 +4,7 @@
   "description": "Javascript date library",
   "main": "index.js",
   "scripts": {
+    "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "test": "jest"
   },
   "repository": {
@@ -18,5 +19,8 @@
   "homepage": "https://github.com/Anisha7/andatelib#readme",
   "dependencies": {
     "jest": "^24.9.0"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.8"
   }
 }
