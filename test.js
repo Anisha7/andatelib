@@ -75,9 +75,10 @@ test('when', () => {
 
 test('consecutiveDates', () => {
     const result = new f.AnDate(2019, 0, 1).consecutiveDates(3, {'years': 1, 'months': 1})
-    expect(new f.AnDate(result[0]).format()).toBe('2019 January 01')
-    expect(new f.AnDate(result[1]).format()).toBe('2020 February 01')
-    expect(new f.AnDate(result[2]).format()).toBe('2021 March 01')
+    console.log(result)
+    expect(result[0].format()).toBe('2019 January 01')
+    expect(result[1].format()).toBe('2020 February 01')
+    expect(result[2].format()).toBe('2021 March 01')
 });
 
 test('nextDate', () => {
