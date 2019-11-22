@@ -1,14 +1,9 @@
 /* eslint-disable no-undef */
 const f = require('./index.js');
 
-// import { AnDate } from './index.js'
-
-test('test', () => {
-    expect(true).toBe(true);
-});
-
 test('year', () => {
     expect(new f.AnDate(2019, 2, 2).year()).toBe(2019);
+    expect(new f.AnDate('9/26/1965').year()).toBe(1965);
 });
 
 test('month', () => {
