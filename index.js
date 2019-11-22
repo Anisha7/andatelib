@@ -177,3 +177,6 @@ AnDate.nextDate = function (dates) {
     // find the date that will happen next in dates
     // return the next date
   }
+
+
+export default AnDate;

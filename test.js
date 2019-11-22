@@ -1,12 +1,14 @@
 /* eslint-disable no-undef */
-require('./index.js');
+// require('./index.js');
+
+import AnDate from './index.js'
 
 test('test', () => {
     expect(true).toBe(true);
 });
 
 test('year', () => {
-    expect(true).toBe(true);
+    expect(new AnDate(2019, 2, 2).year()).toBe(2019);
 });
 
 test('month', () => {
