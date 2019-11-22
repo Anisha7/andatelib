@@ -38,7 +38,7 @@ class AnDate {
     )} ${this.mapStringToLetter("D")}`;
   }
 
-  // helowe
+  // helper function
   mapStringToLetter(letter) {
     switch (letter) {
       case "Y":
@@ -70,7 +70,7 @@ class AnDate {
       case "s":
         return this.seconds();
       default:
-          return letter;
+        return letter;
     }
   }
   // format date
@@ -79,15 +79,53 @@ class AnDate {
       return this.fullDateString();
     }
     let result = "";
-    s.split('').forEach(letter => {
+    s.split("").forEach(letter => {
       result += this.mapStringToLetter(letter);
     });
     return result;
   }
 
-  // TODO: returns a human readble description of 'when' a date will occur
+  // TODO: returns a human readable description of 'when' a date will occur
   when() {
-    return;
+    const now = new AnDate()
+
+    const years = this.year() - now.year()
+    if (years !== 0) {
+        const s = Math.abs(years) == 1 ? 'year' : 'years'
+        return years > 0 ? `${years} ${s} from now` : `${Math.abs(years)} ${s} ago`;
+    }
+
+    const months = this.month() - now.month()
+    if (months !== 0) {
+        const s = Math.abs(months) === 1 ? 'month' : 'months'
+        return months > 0 ? `${months} ${s} from now` : `${Math.abs(months)} ${s} ago`;
+    }
+
+    const days = this.day() - now.day()
+    if (days !== 0) {
+        const s = Math.abs(days) == 1 ? 'day' : 'days'
+        return days > 0 ? `${days} ${s} from now` : `${Math.abs(days)} ${s} ago`;
+    }
+
+    const hours = this.hours() - now.hours()
+    if (hours !== 0) {
+        const s = Math.abs(hours) == 1 ? 'hour' : 'hours'
+        return hours > 0 ? `${hours} ${s} from now` : `${Math.abs(hours)} ${s} ago`;
+    }
+
+    const minutes = this.minutes() - now.minutes()
+    if (minutes !== 0) {
+        const s = Math.abs(minutes) == 1 ? 'minute' : 'minutes'
+        return minutes > 0 ? `${minutes} ${s} from now` : `${Math.abs(minutes)} ${s} ago`;
+    }
+
+    const seconds = this.seconds() - now.seconds()
+    if (seconds !== 0) {
+        const s = Math.abs(seconds) == 1 ? 'second' : 'seconds'
+        return seconds > 0 ? `${seconds} ${s} from now` : `${Math.abs(seconds)} ${s} ago`;
+    }
+
+    return "Right now!"
   }
 
   // Takes an offset object with any of the following properties: years, months, days, hours, minutes, seconds, milliseconds
@@ -159,7 +197,7 @@ AnDate.months = [
 
 //
 // TODO: Takes an array of dates, returns an array of ordered dates
-// Stretch: Return an object containing three keys each holding an array of dates. The keys are: 
+// Stretch: Return an object containing three keys each holding an array of dates. The keys are:
 
 // - past: array of dates that happened before today
 // - present: all dates that happen today
@@ -167,18 +205,17 @@ AnDate.months = [
 
 // { past: [...], present:[...], future:[...] }
 //
-AnDate.orderDates = function (dates) {
-    return dates
-}
+AnDate.orderDates = function(dates) {
+  return dates;
+};
 
 //
-// TODO: Given an array of dates find the date that will happen next. 
+// TODO: Given an array of dates find the date that will happen next.
 // That is the one closest to right now but not past.
 //
-AnDate.nextDate = function (dates) {
-    // find the date that will happen next in dates
-    // return the next date
-  }
+AnDate.nextDate = function(dates) {
+  // find the date that will happen next in dates
+  // return the next date
+};
 
-
-module.exports.AnDate = AnDate
+module.exports.AnDate = AnDate;

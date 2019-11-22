@@ -51,6 +51,8 @@ d.format('Y-M-D h:I:S') // '2017-January-02 3:04:05'
 ```
 
 #### How long until the date occurs using 'when'
+This returns how much time has passed or is left until the created date.
+The metrics are in years, months, days, hours, minutes, or seconds.
 ```
 let d = new f.AnDate(2019, 0, 2, 3, 4, 5)
 d.when() // '6 months ago'

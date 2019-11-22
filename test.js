@@ -44,18 +44,26 @@ test('format', () => {
 });
 
 test('when', () => {
+    // mock date.now
+    const DATE_TO_USE = new Date(2019, 10, 22, 2, 41);
+    const realDateNow = Date.now.bind(global.Date);
+    const dateNowStub = jest.fn(() => DATE_TO_USE);
+    global.Date.now = dateNowStub;
     let d = new f.AnDate(2019, 0, 2, 3, 4, 5)
-    expect(d.when()).toBe('6 months ago')
+    expect(d.when()).toBe('10 months ago')
     d = new f.AnDate(2019, 9, 2, 3, 4, 5)
-    expect(d.when()).toBe('3 months from now')
+    expect(d.when()).toBe('1 month ago')
     d = new f.AnDate(2024, 9, 2, 3, 4, 5)
     expect(d.when()).toBe('5 years from now')
-    d = new f.AnDate(2019, 6, 30, 3, 4, 5)
-    expect(d.when()).toBe('3 days from now')
+    d = new f.AnDate(2019, 10, 30, 3, 4, 5)
+    expect(d.when()).toBe('8 days from now')
+
+    // reset date.now
+    global.Date.now = realDateNow;
 });
 
 test('consecutiveDates', () => {
-    const result = new  f.AnDate(2019, 0, 1).consecutiveDates(3, {'years': 1, 'months': 1})
+    const result = new f.AnDate(2019, 0, 1).consecutiveDates(3, {'years': 1, 'months': 1})
     expect(result[0].toLocaleDateString()).toBe('2019-1-1')
     expect(result[1].toLocaleDateString()).toBe('2020-2-1')
     expect(result[2].toLocaleDateString()).toBe('2021-3-1')
