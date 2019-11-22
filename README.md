@@ -1,3 +1,5 @@
+![npm](https://img.shields.io/npm/v/andatelib) ![GitHub package.json version](https://img.shields.io/github/package-json/v/anisha7/andatelib) ![GitHub repo size](https://img.shields.io/github/repo-size/anisha7/andatelib?style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/anisha7/andatelib?style=plastic) ![GitHub top language](https://img.shields.io/github/languages/top/anisha7/andatelib) ![GitHub issues](https://img.shields.io/github/issues-raw/anisha7/andatelib) ![npm collaborators](https://img.shields.io/npm/collaborators/andatelib) ![GitHub followers](https://img.shields.io/github/followers/anisha7?style=social) ![GitHub watchers](https://img.shields.io/github/watchers/anisha7/andatelib?style=social) [![Coverage Status](https://coveralls.io/repos/github/Anisha7/andatelib/badge.svg?branch=master)](https://coveralls.io/github/Anisha7/andatelib?branch=master) ![npm](https://img.shields.io/npm/dy/andatelib)
+
 # andatelib
  Javascript date library
 
