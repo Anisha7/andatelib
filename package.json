@@ -1,0 +1,22 @@
+{
+  "name": "andatelib",
+  "version": "1.0.0",
+  "description": "Javascript date library",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anisha7/andatelib.git"
+  },
+  "author": "Anisha Jain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anisha7/andatelib/issues"
+  },
+  "homepage": "https://github.com/Anisha7/andatelib#readme",
+  "dependencies": {
+    "jest": "^24.9.0"
+  }
+}

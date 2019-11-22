@@ -1,92 +1,156 @@
-
 class AnDate {
-    // TODO: can we make this private? What does static really do?
-    // TODO: would using prototype be better?
-    static months = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"];
+  constructor(...args) {
+    this.date = new Date(...args);
+  }
+  // basic methods
+  year() {
+    return this.date.getFullYear();
+  }
 
-    static shortMonths = ["Jan", "Feb", "March", "Apr", "May", "Jun",
-    "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+  month() {
+    return this.date.getMonth();
+  }
 
-    constructor(...args) {
-        this.date = new Date(...args)
-    }
-    // basic methods
-    year() {
-        return this.date.getFullYear()
-    }
+  day() {
+    return this.date.getDate();
+  }
 
-    month() {
-        return this.date.getMonth()
-    }
+  hours() {
+    return this.date.getHours();
+  }
 
-    day() {
-        return this.date.getDate()
-    }
+  minutes() {
+    return this.date.getMinutes();
+  }
 
-    hour() {
-        return this.date.getHours()
-    }
+  seconds() {
+    return this.date.getSeconds();
+  }
 
-    minute() {
-        return this.date.getMinutes()
-    }
+  milliseconds() {
+    return this.date.getMilliseconds();
+  }
 
-    second() {
-        return this.date.getSeconds()
-    }
+  // formatting functions
+  fullDateString() {
+    const day = this.day();
+    return `${mapStringToLetter("Y")} ${mapStringToLetter(
+      "M"
+    )} ${mapStringToLetter("D")}`;
+  }
 
-    milliseconds() {
-        return this.date.getMilliseconds()
+  static mapStringToLetter(letter) {
+    switch (letter) {
+      case "Y":
+        return this.year().toString();
+      case "y":
+        return (this.year() % 100).toString();
+      case "M":
+        return AnDate.months[this.month()];
+      case "m":
+        return AnDate.shortMonths[this.month()];
+      case "D":
+        const day = this.day();
+        return (day < 10 ? "0" : "") + day.toString();
+      case "d":
+        return this.day();
+      case "H":
+        const hour = this.hours();
+        return (hour < 10 ? "0" : "") + hour.toString();
+      case "h":
+        return this.hours();
+      case "I":
+        const minute = this.minutes();
+        return (minute < 10 ? "0" : "") + minute.toString();
+      case "i":
+        return this.minutes();
+      case "S":
+        const second = this.seconds();
+        return (second < 10 ? "0" : "") + second.toString();
+      case "s":
+        return this.seconds();
     }
+  }
+  // format date
+  format(s = null) {
+    if (s === null) {
+      return this.fullDateString();
+    }
+    let result = "";
+    s.forEach(letter => {
+      result += AnDate.mapStringToLetter(letter);
+    });
+    return result;
+  }
 
-    // formatting functions
-    fullDateString() {
-        const day = this.day()
-        return `${this.year().toString()} ${AnDate.months[this.month()]} ${(day < 10 ? '0' : '') + day.toString()}`
-    }
+  // TODO: returns a human readble description of 'when' a date will occur
+  when() {
+    return;
+  }
 
-    static mapStringToLetter(letter) {
-        switch (letter) {
-            case 'Y':
-                return this.year().toString()
-            case 'y':
-                return (this.year()%100).toString()
-            case 'M':
-                return AnDate.months[this.month()]
-            case 'm':
-                return AnDate.shortMonths[this.month()]
-            case 'D':
-                const day = this.day()
-                return (day < 10 ? '0' : '') + day.toString()
-            case 'd':
-                return this.day()
-            case 'H':
-                const hour = this.hour()
-                return (hour < 10 ? '0' : '') + hour.toString()
-            case 'h':
-                return this.hour()
-            case 'I':
-                const minute = this.minute()
-                return (minute < 10 ? '0' : '') + minute.toString()
-            case 'i':
-                return this.minute()
-            case 'S':
-                const second = this.second()
-                return (second < 10 ? '0' : '') + second.toString()
-            case 's':
-                return this.second()
-        }
+  // Takes an offset object with any of the following properties: years, months, days, hours, minutes, seconds, milliseconds
+  consecutiveDates(date, repeat, offset) {
+    const createDate = (date, offset) => {
+      return new Date(
+        date.getFullYear() + offset.years,
+        date.getMonth() + offset.months,
+        date.getDate() + offset.days,
+        date.getHours() + offset.hours,
+        date.getMinutes() + offset.minutes,
+        date.getSeconds() + offset.seconds,
+        date.getMilliseconds() + offset.milliseconds
+      );
+    };
+    let offsetObject = {
+      years: 0,
+      months: 0,
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0
+    };
+    offsetObject = { ...offsetObject, ...offset };
+
+    let result = [];
+    result.push(date);
+    for (i = 1; i < repeat; i += 1) {
+      result.push(createDate(result[i - 1], offsetObject));
     }
-    // format date
-    format(s = null) {
-        if (s === null) {
-            return this.fullDateString()
-        }
-        let result = ''
-        s.forEach(letter => {
-            result += AnDate.mapStringToLetter(letter)
-        })
-        return result
-    }
+    return result;
+  }
 }
+
+// Class variables
+// TODO: can we make this private? What does static really do?
+// TODO: would using prototype be better?
+AnDate.shortMonths = [
+  "Jan",
+  "Feb",
+  "March",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec"
+];
+AnDate.months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+
+// Class helper functions
