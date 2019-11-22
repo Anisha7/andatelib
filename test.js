@@ -75,7 +75,7 @@ test('when', () => {
 
 test('consecutiveDates', () => {
     const result = new f.AnDate(2019, 0, 1).consecutiveDates(3, {'years': 1, 'months': 1})
-    console.log(result)
+    // works on travis, but need to convert to AnDate for local testing
     expect(result[0].format()).toBe('2019 January 01')
     expect(result[1].format()).toBe('2020 February 01')
     expect(result[2].format()).toBe('2021 March 01')
