@@ -33,13 +33,13 @@ class AnDate {
 
   // formatting functions
   fullDateString() {
-    const day = this.day();
-    return `${mapStringToLetter("Y")} ${mapStringToLetter(
+    return `${this.mapStringToLetter("Y")} ${this.mapStringToLetter(
       "M"
-    )} ${mapStringToLetter("D")}`;
+    )} ${this.mapStringToLetter("D")}`;
   }
 
-  static mapStringToLetter(letter) {
+  // helowe
+  mapStringToLetter(letter) {
     switch (letter) {
       case "Y":
         return this.year().toString();
@@ -89,7 +89,7 @@ class AnDate {
   }
 
   // Takes an offset object with any of the following properties: years, months, days, hours, minutes, seconds, milliseconds
-  consecutiveDates(date, repeat, offset) {
+  consecutiveDates(repeat, offset) {
     const createDate = (date, offset) => {
       return new Date(
         date.getFullYear() + offset.years,
@@ -113,8 +113,8 @@ class AnDate {
     offsetObject = { ...offsetObject, ...offset };
 
     let result = [];
-    result.push(date);
-    for (i = 1; i < repeat; i += 1) {
+    result.push(this.date);
+    for (let i = 1; i < repeat; i += 1) {
       result.push(createDate(result[i - 1], offsetObject));
     }
     return result;
@@ -179,4 +179,4 @@ AnDate.nextDate = function (dates) {
   }
 
 
-export default AnDate;
+module.exports.AnDate = AnDate
