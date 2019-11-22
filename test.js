@@ -40,22 +40,22 @@ test('fullDateString', () => {
 })
 
 test('format', () => {
-    const d = new D(2017, 0, 2, 3, 4, 5)
+    const d = new f.AnDate(2017, 0, 2, 3, 4, 5)
     expect(d.format()).toBe('2017 January 02')
     expect(d.format('y/m/d')).toBe('17/Jan/2')
     expect(d.format('H:I:S')).toBe('03:04:05')
     expect(d.format('h:i:s')).toBe('3:4:5')
-    expect(d.format('Y-M-D h:I:S')).toBe('2017-January-02 3:04:05 ')
+    expect(d.format('Y-M-D h:I:S')).toBe('2017-January-02 3:04:05')
 });
 
 test('when', () => {
-    let d = new D(2019, 0, 2, 3, 4, 5)
+    let d = new f.AnDate(2019, 0, 2, 3, 4, 5)
     expect(d.when()).toBe('6 months ago')
-    d = new D(2019, 9, 2, 3, 4, 5)
+    d = new f.AnDate(2019, 9, 2, 3, 4, 5)
     expect(d.when()).toBe('3 months from now')
-    d = new D(2024, 9, 2, 3, 4, 5)
+    d = new f.AnDate(2024, 9, 2, 3, 4, 5)
     expect(d.when()).toBe('5 years from now')
-    d = new D(2019, 6, 30, 3, 4, 5)
+    d = new f.AnDate(2019, 6, 30, 3, 4, 5)
     expect(d.when()).toBe('3 days from now')
 });
 

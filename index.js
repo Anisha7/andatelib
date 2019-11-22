@@ -69,6 +69,8 @@ class AnDate {
         return (second < 10 ? "0" : "") + second.toString();
       case "s":
         return this.seconds();
+      default:
+          return letter;
     }
   }
   // format date
@@ -77,8 +79,8 @@ class AnDate {
       return this.fullDateString();
     }
     let result = "";
-    s.forEach(letter => {
-      result += AnDate.mapStringToLetter(letter);
+    s.split('').forEach(letter => {
+      result += this.mapStringToLetter(letter);
     });
     return result;
   }
