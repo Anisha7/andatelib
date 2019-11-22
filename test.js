@@ -66,6 +66,8 @@ test('when', () => {
     expect(d.when()).toBe('5 years from now')
     d = new f.AnDate(2019, 10, 30, 3, 4, 5)
     expect(d.when()).toBe('8 days from now')
+    d = new f.AnDate()
+    expect(d.when()).toBe('Right now!')
 
     // reset date.now
     global.Date.now = realDateNow;

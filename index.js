@@ -158,7 +158,7 @@ class AnDate {
     offsetObject = { ...offsetObject, ...offset };
 
     let result = [];
-    result.push(this.date);
+    result.push(this);
     for (let i = 1; i < repeat; i += 1) {
       result.push(createDate(result[i - 1], offsetObject));
     }
