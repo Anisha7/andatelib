@@ -1,5 +1,7 @@
 /* eslint-disable no-undef */
-const f = require('./index.js');
+// const f = require('./index.js');
+// const f = require('./umd/andatelib.js');
+const f = require('./esm/index.js');
 
 test('year', () => {
     expect(new f.AnDate(2019, 2, 2).year()).toBe(2019);

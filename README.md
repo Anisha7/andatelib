@@ -127,3 +127,32 @@ f.AnDate.nextDate(dates) // dates[2]
 dates = [new f.AnDate(2019, 0, 1), new f.AnDate(2019, 10, 20), new f.AnDate(2012, 11, 1)]
 f.AnDate.nextDate(dates) // today's date
 ```
+
+## Test coverage
+npx jest --coverage
+ PASS  ./test.js
+  ✓ year (4ms)
+  ✓ month (1ms)
+  ✓ day
+  ✓ hours
+  ✓ minutes (1ms)
+  ✓ seconds
+  ✓ milliseconds
+  ✓ getTime
+  ✓ fullDateString (1ms)
+  ✓ format (1ms)
+  ✓ when (2ms)
+  ✓ consecutiveDates (3ms)
+  ✓ nextDate (2ms)
+
+----------|----------|----------|----------|----------|-------------------|
+File      |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+----------|----------|----------|----------|----------|-------------------|
+All files |    82.95 |    58.57 |    94.74 |    82.76 |                   |
+ index.js |    82.95 |    58.57 |    94.74 |    82.76 |... 29,132,213,223 |
+----------|----------|----------|----------|----------|-------------------|
+Test Suites: 1 passed, 1 total
+Tests:       13 passed, 13 total
+Snapshots:   0 total
+Time:        1.545s
+Ran all test suites.

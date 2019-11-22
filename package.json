@@ -2,8 +2,10 @@
   "name": "andatelib",
   "version": "1.0.1",
   "description": "Javascript date library",
-  "main": "index.js",
+  "main": "umd/andatelib.js",
+  "module": "esm/index.js",
   "scripts": {
+    "prepare": "rollup --config",
     "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "test": "jest"
   },
@@ -21,6 +23,12 @@
     "jest": "^24.9.0"
   },
   "devDependencies": {
-    "coveralls": "^3.0.8"
-  }
+    "coveralls": "^3.0.8",
+    "rollup": "^1.27.4",
+    "rollup-plugin-terser": "^5.1.2"
+  },
+  "files": [
+    "esm/*",
+    "emd/*"
+  ]
 }
