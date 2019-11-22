@@ -67,13 +67,15 @@ class AnDate {
             case 'h':
                 return this.hour()
             case 'I':
-                return //something
+                const minute = this.minute()
+                return (minute < 10 ? '0' : '') + minute.toString()
             case 'i':
-                return //something
+                return this.minute()
             case 'S':
-                return //something
+                const second = this.second()
+                return (second < 10 ? '0' : '') + second.toString()
             case 's':
-                return //something
+                return this.second()
         }
     }
     // format date
