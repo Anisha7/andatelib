@@ -79,4 +79,12 @@ result[1].toLocaleDateString() // '2020-2-1'
 result[2].toLocaleDateString() // '2021-3-1'
 ```
 
-
+#### Get nextDate
+Given an array of dates, it returns the date that occurs next after today 
+If all dates occur before today or no dates are provided, this returns today's date
+```
+let dates = [new f.AnDate(2019, 0, 1), new f.AnDate(2019, 10, 22), new f.AnDate(2019, 11, 1)]
+f.AnDate.nextDate(dates) // dates[2]
+dates = [new f.AnDate(2019, 0, 1), new f.AnDate(2019, 10, 20), new f.AnDate(2012, 11, 1)]
+f.AnDate.nextDate(dates) // today's date
+```
