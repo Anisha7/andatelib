@@ -31,6 +31,10 @@ class AnDate {
     return this.date.getMilliseconds();
   }
 
+  getTime() {
+    return this.date.getTime();
+  }
+
   // formatting functions
   fullDateString() {
     return `${this.mapStringToLetter("Y")} ${this.mapStringToLetter(
@@ -210,12 +214,34 @@ AnDate.orderDates = function(dates) {
 };
 
 //
-// TODO: Given an array of dates find the date that will happen next.
+// Given an array of dates find the date that will happen next.
 // That is the one closest to right now but not past.
-//
+// If no dates are given or no future dates are given, it returns today
 AnDate.nextDate = function(dates) {
+  const today = new AnDate().getTime()
+  if (dates.length == 0) {
+    return new AnDate()
+  }
   // find the date that will happen next in dates
   // return the next date
+  let result = dates[0]
+
+  // find the date
+  dates.forEach(date => {
+    const diff = date.getTime() - today
+    const oldDiff = result.getTime() - today
+    // if this date is closer to today, update value
+    if ( (diff > 0 && diff < oldDiff) || (oldDiff < 0 && diff > oldDiff)) {
+      result = date
+    }
+  })
+
+  // ensure that result is not a past date, or return today
+  if (result.getTime() - today < 0) {
+    return new AnDate()
+  }
+  // found a valid date
+  return result
 };
 
 module.exports.AnDate = AnDate;

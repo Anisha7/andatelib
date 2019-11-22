@@ -30,6 +30,10 @@ test('milliseconds', () => {
     expect(new f.AnDate(2019, 2, 2, 4, 20, 10, 30).milliseconds()).toBe(30);
 });
 
+test('getTime', () => {
+    expect(new f.AnDate(2019, 2, 2, 4, 20, 10, 30).getTime()).toBe(1551529210030)
+})
+
 test('fullDateString', () => {
     expect(new f.AnDate(2019, 2, 2, 4, 20, 10, 30).fullDateString()).toBe('2019 March 02');
 })
@@ -68,4 +72,11 @@ test('consecutiveDates', () => {
     expect(result[1].toLocaleDateString()).toBe('2020-2-1')
     expect(result[2].toLocaleDateString()).toBe('2021-3-1')
 });
+
+test('nextDate', () => {
+    let dates = [new f.AnDate(2019, 0, 1), new f.AnDate(2019, 10, 22), new f.AnDate(2019, 11, 1)]
+    expect(f.AnDate.nextDate(dates)).toBe(dates[2])
+    dates = [new f.AnDate(2019, 0, 1), new f.AnDate(2019, 10, 20), new f.AnDate(2012, 11, 1)]
+    expect(f.AnDate.nextDate(dates)).toStrictEqual(new f.AnDate())
+})
 

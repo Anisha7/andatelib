@@ -37,6 +37,10 @@ const d2 = new AnDate('9/26/1965').year() // year: 1965, month: 9, day: 26
 #### Get the milliseconds
 `new f.AnDate(2019, 2, 2, 4, 20, 10, 30).milliseconds() // 30`
 
+#### getTime
+returns the number of milliseconds since 1 January 1970 00:00:00
+`new f.AnDate(2019, 2, 2, 4, 20, 10, 30).getTime() // 1551529210030`
+
 #### Get the fullDateString
 `new f.AnDate(2019, 2, 2, 4, 20, 10, 30).fullDateString() // '2019 March 02'`
 
