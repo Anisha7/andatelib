@@ -153,4 +153,27 @@ AnDate.months = [
   "December"
 ];
 
-// Class helper functions
+// Class functions
+
+//
+// TODO: Takes an array of dates, returns an array of ordered dates
+// Stretch: Return an object containing three keys each holding an array of dates. The keys are: 
+
+// - past: array of dates that happened before today
+// - present: all dates that happen today
+// - furture: all of the dates that will occur in the future
+
+// { past: [...], present:[...], future:[...] }
+//
+AnDate.orderDates = function (dates) {
+    return dates
+}
+
+//
+// TODO: Given an array of dates find the date that will happen next. 
+// That is the one closest to right now but not past.
+//
+AnDate.nextDate = function (dates) {
+    // find the date that will happen next in dates
+    // return the next date
+  }
